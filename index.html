@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Portfolio professionnel de Chrysanthe Beni Joy Nishimwe – Développeur Full Stack PHP, Django, WordPress, React Native, Node.js">
+<title>Chrysanthe Nishimwe · Portfolio Full Stack</title>
+<link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-light: #f8fafc;
+    --surface-light: #ffffff;
+    --text-light: #0f172a;
+    --text-light-secondary: #334155;
+    --primary-light: #3b82f6;
+    --primary-gradient: linear-gradient(135deg, #2563eb, #8b5cf6);
+    --primary-glow: rgba(37,99,235,0.2);
+    --border-light: #e2e8f0;
+    --card-shadow-light: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
+    
+    --bg-dark: #0a0a1a;
+    --surface-dark: #111827;
+    --text-dark: #f1f5f9;
+    --text-dark-secondary: #cbd5e1;
+    --primary-dark: #60a5fa;
+    --primary-gradient-dark: linear-gradient(135deg, #60a5fa, #c084fc);
+    --primary-glow-dark: rgba(96,165,250,0.15);
+    --border-dark: #1f2937;
+    --card-shadow-dark: 0 10px 25px -5px rgba(0,0,0,0.3), 0 8px 10px -6px rgba(0,0,0,0.2);
+    
+    --transition: all 0.25s ease;
+    --border-radius-card: 1.5rem;
+    --border-radius-element: 2rem;
+}
+
+body {
+    background: var(--bg-light);
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+    transition: background 0.3s ease, color 0.2s ease;
+    overflow-x: hidden;
+}
+
+body.dark {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 10px; }
+body.dark ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+section, header, .project-card {
+    animation: fadeUp 0.6s ease-out forwards;
+}
+
+nav {
+    position: sticky;
+    top: 1rem;
+    z-index: 1000;
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px);
+    border-radius: 60px;
+    padding: 0.4rem 1.8rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: var(--transition);
+}
+body.dark nav {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(255,255,255,0.08);
+}
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    list-style: none;
+    align-items: center;
+}
+nav a {
+    text-decoration: none;
+    font-weight: 550;
+    font-size: 0.9rem;
+    color: inherit;
+    padding: 0.5rem 0.2rem;
+    transition: var(--transition);
+    letter-spacing: -0.2px;
+    position: relative;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-light);
+    transition: width 0.3s ease;
+}
+nav a:hover::after { width: 100%; }
+nav a:hover { color: var(--primary-light); }
+#theme-toggle, #lang-toggle-btn {
+    background: rgba(0,0,0,0.06);
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    border-radius: 40px;
+    transition: var(--transition);
+    color: inherit;
+    font-weight: 600;
+}
+#theme-toggle:hover, #lang-toggle-btn:hover {
+    background: var(--primary-light);
+    color: white;
+    transform: translateY(-2px);
+}
+
+header {
+    text-align: center;
+    padding: 3rem 2rem 3rem;
+    position: relative;
+}
+.profile {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid white;
+    box-shadow: 0 15px 30px -10px var(--primary-glow);
+    transition: transform 0.3s;
+    background: var(--primary-gradient);
+}
+.profile:hover { transform: scale(1.02); }
+.profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-top: 1.5rem;
+    background: linear-gradient(135deg, #1e293b, #2563eb, #8b5cf6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+body.dark h1 {
+    background: linear-gradient(135deg, #e2e8f0, #60a5fa, #c084fc);
+    background-clip: text;
+}
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light-secondary);
+    margin: 0.5rem 0 1.5rem;
+    font-weight: 500;
+}
+.buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--primary-gradient);
+    color: white;
+    padding: 0.7rem 1.6rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    border: none;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px -3px var(--primary-glow);
+}
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px -8px rgba(37,99,235,0.4);
+    filter: brightness(1.05);
+}
+body.dark .btn { background: var(--primary-gradient-dark); color: #0f172a; }
+.social-links-header {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.05);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: var(--text-light-secondary);
+    transition: var(--transition);
+    text-decoration: none;
+}
+.social-icon:hover {
+    background: var(--primary-light);
+    color: white;
+    transform: translateY(-4px);
+}
+body.dark .social-icon {
+    background: rgba(255,255,255,0.08);
+    color: #cbd5e1;
+}
+body.dark .social-icon:hover {
+    background: var(--primary-dark);
+    color: #0f172a;
+}
+
+section {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1.8rem 2rem;
+    background: var(--surface-light);
+    border-radius: var(--border-radius-card);
+    box-shadow: var(--card-shadow-light);
+    transition: var(--transition);
+    border: 1px solid var(--border-light);
+    scroll-margin-top: 5rem;
+}
+body.dark section {
+    background: var(--surface-dark);
+    border-color: var(--border-dark);
+    box-shadow: var(--card-shadow-dark);
+}
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: linear-gradient(120deg, var(--primary-light), #a855f7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+body.dark h2 { background: linear-gradient(120deg, #60a5fa, #c084fc); background-clip: text; }
+.card {
+    background: var(--bg-light);
+    border-radius: 1.2rem;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+body.dark .card { background: #111827; border: 1px solid #1e293b; }
+.skill-group { margin-bottom: 1.8rem; }
+.skill-group h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-light);
+}
+.skill { margin: 1rem 0; }
+.skill p { display: flex; justify-content: space-between; font-weight: 500; margin-bottom: 0.3rem; }
+.bar {
+    background: #e2e8f0;
+    border-radius: 30px;
+    height: 8px;
+    overflow: hidden;
+}
+body.dark .bar { background: #1e293b; }
+.bar span {
+    display: block;
+    height: 100%;
+    background: var(--primary-gradient);
+    border-radius: 30px;
+    width: 0%;
+    transition: width 1s cubic-bezier(0.22, 0.97, 0.36, 1);
+}
+.badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1rem 0;
+}
+.badge {
+    background: linear-gradient(135deg, #eef2ff, #ffffff);
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1e293b;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+body.dark .badge {
+    background: #1e2a3e;
+    color: #e2e8f0;
+}
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.project-card {
+    background: var(--bg-light);
+    border-radius: 1.2rem;
+    padding: 1.2rem;
+    transition: all 0.25s;
+    border: 1px solid var(--border-light);
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+    border-color: var(--primary-light);
+}
+body.dark .project-card { background: #111827; }
+.project-card a {
+    margin-top: 1rem;
+    display: inline-block;
+    font-weight: 600;
+    color: var(--primary-light);
+    text-decoration: none;
+}
+.contact-form {
+    margin-top: 1.5rem;
+    background: var(--bg-light);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+}
+body.dark .contact-form { background: #111827; }
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; }
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-light);
+    background: var(--surface-light);
+    color: var(--text-light);
+    font-family: inherit;
+    transition: var(--transition);
+}
+body.dark .form-group input, body.dark .form-group textarea {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+.btn-submit {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 0.8rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+.btn-submit:hover { transform: translateY(-2px); filter: brightness(1.02); }
+.social-links-contact {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0 0.5rem;
+}
+footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+#back2top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--primary-gradient);
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+    z-index: 999;
+}
+#back2top.show { opacity: 1; visibility: visible; }
+@media (max-width: 768px) {
+    nav { width: 95%; padding: 0.3rem 1rem; }
+    nav ul { gap: 0.6rem; }
+    section { margin: 1.2rem 1rem; padding: 1.2rem; }
+    .profile { width: 110px; height: 110px; }
+}
+@media print {
+    nav, #back2top, .btn, .social-links-header, .contact-form, .social-links-contact { display: none; }
+    body { background: white; color: black; }
+    section { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#about" data-en="About" data-fr="À propos">À propos</a></li>
+        <li><a href="#identity" data-en="Identity" data-fr="Identité">Identité</a></li>
+        <li><a href="#skills" data-en="Skills" data-fr="Compétences">Compétences</a></li>
+        <li><a href="#experience" data-en="Experience" data-fr="Expérience">Expérience</a></li>
+        <li><a href="#projects" data-en="Projects" data-fr="Projets">Projets</a></li>
+        <li><button id="theme-toggle" aria-label="Dark mode"><i class="fas fa-moon"></i></button></li>
+        <li><button id="lang-toggle-btn">FR</button></li>
+    </ul>
+</nav>
+
+<header>
+    <div class="profile">
+        <img id="profile-img" src="images/profile.jpg" alt="Chrysanthe Nishimwe" onerror="this.onerror=null; this.src='https://github.com/Chrysanthe127.png'">
+    </div>
+    <h1>Chrysanthe Beni Joy NISHIMWE</h1>
+    <p class="subtitle" data-en="Full Stack Developer · PHP · Django · WordPress · React Native · Node.js · Creative Technologist" data-fr="Développeur Full Stack · PHP · Django · WordPress · React Native · Node.js · Technologue créatif">
+        Développeur Full Stack · PHP · Django · WordPress · React Native · Node.js · Technologue créatif
+    </p>
+    <div class="buttons">
+        <a href="https://github.com/Chrysanthe127" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+        <a href="mailto:chrysanthenishimwe2@gmail.com" class="btn"><i class="fas fa-envelope"></i> <span data-en="Contact" data-fr="Contact">Contact</span></a>
+    </div>
+    <div class="social-links-header">
+        <a href="https://facebook.com/Chrysanthe.nishimwe" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/25767662602" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://instagram.com/Cuatro127" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/Cuatro127" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+
+</header>
+
+<section id="about">
+    <h2><i class="fas fa-user-astronaut"></i> <span data-en="Professional Profile" data-fr="Profil Professionnel">Profil Professionnel</span></h2>
+    <p data-en="I am Chrysanthe Beni Joy Nishimwe, a young ICT graduate (Computer Option) from the University of Burundi. Passionate about web development, data management, and intelligent systems. Mastery of PHP, JavaScript, WordPress, PrestaShop, Django, CodeIgniter, React Native, Node.js, and databases (MySQL, SQL Server, Oracle). During my internship at the Burundi Revenue Authority (OBR), I contributed to application development, database backup, and user support. Rigorous, autonomous, and curious, ready for challenges in web development, data analysis, or full-stack projects." data-fr="Je suis Chrysanthe Nishimwe Beni Joy, jeune diplômé en TIC (Option Informatique) à l’Université du Burundi. Passionné par le développement web, la gestion de données et les systèmes intelligents. Je maîtrise PHP, JavaScript, WordPress, PrestaShop, Django, CodeIgniter, React Native, Node.js et les bases de données (MySQL, SQL Server, Oracle). Lors de mon stage à l’Office Burundais des Recettes (OBR), j’ai participé au développement d’applications, à la sauvegarde des bases de données et à l’assistance utilisateur. Rigoureux, autonome et curieux, prêt à relever des défis en développement web, analyse de données ou projets full-stack.">
+        Je suis Chrysanthe Nishimwe Beni Joy, jeune diplômé en TIC (Option Informatique) à l’Université du Burundi. Passionné par le développement web, la gestion de données et les systèmes intelligents. Je maîtrise PHP, JavaScript, WordPress, PrestaShop, Django, CodeIgniter, React Native, Node.js et les bases de données. Lors de mon stage à l’OBR, j’ai participé au développement d’applications, à la sauvegarde des bases de données et à l’assistance utilisateur. Rigoureux, autonome et curieux.
+    </p>
+</section>
+
+<section id="identity">
+    <h2><i class="fas fa-id-card"></i> <span data-en="Personal details" data-fr="Coordonnées">Coordonnées</span></h2>
+    <div class="card" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+        <div>
+            <p><i class="fas fa-user"></i> <strong>Nom complet:</strong> NISHIMWE Chrysanthe Beni Joy</p>
+            <p><i class="fas fa-calendar-alt"></i> <strong>Date/Lieu naissance:</strong> 2003, Makamba</p>
+            <p><i class="fas fa-map-marker-alt"></i> <strong>Résidence:</strong> Nyabagere, Bujumbura</p>
+        </div>
+        <div>
+            <p><i class="fas fa-phone"></i> <strong>Tél:</strong> +257 67 662 602</p>
+            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> chrysanthenishimwe2@gmail.com</p>
+            <p><i class="fab fa-github"></i> <strong>GitHub:</strong> Chrysanthe127</p>
+        </div>
+    </div>
+    <div class="card">
+        <p><i class="fas fa-language"></i> <strong data-en="Languages" data-fr="Langues">Langues</strong> : 
+            <span data-en="Kirundi (native), French (fluent), English (good), Kiswahili (good)" data-fr="Kirundi (maternel), Français (courant), Anglais (bon), Kiswahili (bon)">Kirundi (maternel), Français (courant), Anglais (bon), Kiswahili (bon)</span>
+        </p>
+    </div>
+</section>
+
+<section id="skills">
+    <h2><i class="fas fa-cogs"></i> <span data-en="Technical Skills" data-fr="Compétences techniques">Compétences techniques</span></h2>
+    <div class="skill-group"><h3><i class="fas fa-code"></i> Langages & Technologies</h3>
+        <div class="skill"><p>HTML/CSS <span>90%</span></p><div class="bar"><span style="width:90%"></span></div></div>
+        <div class="skill"><p>JavaScript <span>80%</span></p><div class="bar"><span style="width:80%"></span></div></div>
+        <div class="skill"><p>PHP <span>75%</span></p><div class="bar"><span style="width:75%"></span></div></div>
+        <div class="skill"><p>Python <span>55%</span></p><div class="bar"><span style="width:55%"></span></div></div>
+        <div class="skill"><p>Java <span>60%</span></p><div class="bar"><span style="width:60%"></span></div></div>
+        <div class="skill"><p>React Native <span>55%</span></p><div class="bar"><span style="width:55%"></span></div></div>
+        <div class="skill"><p>Node.js <span>55%</span></p><div class="bar"><span style="width:55%"></span></div></div>
+    </div>
+    <div class="skill-group"><h3><i class="fas fa-layer-group"></i> Frameworks & CMS</h3>
+        <div class="skill"><p>WordPress <span>90%</span></p><div class="bar"><span style="width:90%"></span></div></div>
+        <div class="skill"><p>PrestaShop <span>80%</span></p><div class="bar"><span style="width:80%"></span></div></div>
+        <div class="skill"><p>Django <span>55%</span></p><div class="bar"><span style="width:55%"></span></div></div>
+        <div class="skill"><p>CodeIgniter <span>55%</span></p><div class="bar"><span style="width:55%"></span></div></div>
+    </div>
+    <div class="skill-group"><h3><i class="fas fa-database"></i> Bases de données & Outils</h3><div class="badge-list"><span class="badge">MySQL</span><span class="badge">SQL Server</span><span class="badge">Oracle</span><span class="badge">Git/GitHub</span><span class="badge">Maintenance IT</span></div></div>
+</section>
+
+<section id="experience">
+    <h2><i class="fas fa-briefcase"></i> <span data-en="Professional Experience" data-fr="Expérience professionnelle">Expérience professionnelle</span></h2>
+    <div class="card"><h3><i class="fas fa-building"></i> Office Burundais des Recettes (OBR) – Stage académique</h3><p><strong data-en="Roles:" data-fr="Missions :">Missions :</strong> Support applicatif, DBA, Assistance</p><ul><li><strong data-en="Application development" data-fr="Développement applicatif">Développement applicatif</strong> : Gestion et suivi.</li><li><strong data-en="Database backup & security" data-fr="Sauvegarde BD">Sauvegarde BD</strong> : Backup et sécurisation.</li><li><strong data-en="IT Support" data-fr="Support IT">Support IT</strong> : Utilisateurs, réseau, logiciels.</li></ul></div>
+    <div class="card"><h3><i class="fas fa-star"></i> <span data-en="Soft Skills & Qualities" data-fr="Qualités personnelles">Qualités</span></h3><ul><li><i class="fas fa-check-circle"></i> Rigueur & organisation</li><li><i class="fas fa-check-circle"></i> Autonomie & initiative</li><li><i class="fas fa-check-circle"></i> Adaptabilité & curiosité technique</li></ul></div>
+</section>
+
+<section id="projects">
+    <h2><i class="fab fa-github"></i> <span data-en="GitHub Projects" data-fr="Projets GitHub">Projets GitHub</span></h2>
+    <div class="projects" id="github-projects"><p><i class="fas fa-spinner fa-pulse"></i> <span data-en="Loading projects..." data-fr="Chargement des projets...">Chargement des projets...</span></p></div>
+</section>
+
+<section id="contact">
+    <h2><i class="fas fa-paper-plane"></i> <span data-en="Get in touch" data-fr="Contactez-moi">Contactez-moi</span></h2>
+    <div class="contact-form">
+        <h3 style="margin-bottom: 1rem;" data-en="Send me a message" data-fr="Envoyez-moi un message">Envoyez-moi un message</h3>
+        <form id="contactForm" action="https://formspree.io/f/mldrgnvq" method="POST">
+            <div class="form-group"><label for="name" data-en="Full name" data-fr="Nom complet">Nom complet</label><input type="text" id="name" name="name" required placeholder="Chrysanthe Nishimwe"></div>
+            <div class="form-group"><label for="email" data-en="Email address" data-fr="Adresse email">Adresse email</label><input type="email" id="email" name="email" required placeholder="exemple@domaine.com"></div>
+            <div class="form-group"><label for="message" data-en="Your message" data-fr="Votre message">Votre message</label><textarea id="message" name="message" required placeholder="Bonjour, je souhaite collaborer..."></textarea></div>
+            <button type="submit" class="btn-submit" data-en="Send message" data-fr="Envoyer le message">Envoyer le message</button>
+            <div id="formStatus" class="form-message"></div>
+        </form>
+    </div>
+    <div class="social-links-contact">
+        <a href="https://facebook.com/Chrysanthe.nishimwe" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/25767662602" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://instagram.com/Cuatro127" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/Cuatro127" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+    </div>
+</section>
+
+<footer><p>© 2026 Chrysanthe Beni Joy Nishimwe — Portfolio | <span data-en="" data-fr="Design moderne et responsive">Design moderne et responsive</span></p></footer>
+
+<div id="back2top"><i class="fas fa-chevron-up"></i></div>
+
+<script>
+// Thème clair/sombre
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+if (localStorage.getItem('theme') === 'dark') { body.classList.add('dark'); themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; } 
+else { themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; }
+themeToggle.addEventListener('click', () => { body.classList.toggle('dark'); if(body.classList.contains('dark')){ localStorage.setItem('theme','dark'); themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; } else { localStorage.setItem('theme','light'); themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; } });
+
+// Bilinguisme
+let currentLang = localStorage.getItem('lang') || 'fr';
+const langBtn = document.getElementById('lang-toggle-btn');
+let reposData = [];
+
+function updateLanguage() {
+    document.querySelectorAll('[data-en][data-fr]').forEach(el => { 
+        el.innerText = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-fr'); 
+    });
+    langBtn.innerText = currentLang === 'fr' ? 'EN' : 'FR';
+    const labels = document.querySelectorAll('.form-group label');
+    if(labels[0]) labels[0].innerText = currentLang === 'fr' ? 'Nom complet' : 'Full name';
+    if(labels[1]) labels[1].innerText = currentLang === 'fr' ? 'Adresse email' : 'Email address';
+    if(labels[2]) labels[2].innerText = currentLang === 'fr' ? 'Votre message' : 'Your message';
+    const submitBtn = document.querySelector('.btn-submit');
+    if(submitBtn) submitBtn.innerText = currentLang === 'fr' ? 'Envoyer le message' : 'Send message';
+    const placeholders = [document.getElementById('name'), document.getElementById('email'), document.getElementById('message')];
+    if(placeholders[0]) placeholders[0].placeholder = currentLang === 'fr' ? 'Chrysanthe Nishimwe' : 'Chrysanthe Nishimwe';
+    if(placeholders[1]) placeholders[1].placeholder = currentLang === 'fr' ? 'exemple@domaine.com' : 'example@domain.com';
+    if(placeholders[2]) placeholders[2].placeholder = currentLang === 'fr' ? 'Bonjour, je souhaite collaborer...' : 'Hello, I would like to collaborate...';
+    if(reposData.length) renderRepos();
+}
+langBtn.addEventListener('click', () => { currentLang = currentLang === 'fr' ? 'en' : 'fr'; localStorage.setItem('lang', currentLang); updateLanguage(); });
+updateLanguage();
+
+// Récupération de TOUS les repos GitHub (pagination gérée)
+async function fetchAllGitHubRepos(username) {
+    let page = 1;
+    let allRepos = [];
+    while (true) {
+        const url = `https://api.github.com/users/${username}/repos?per_page=100&page=${page}&sort=updated`;
+        const response = await fetch(url);
+        if (!response.ok) break;
+        const data = await response.json();
+        if (data.length === 0) break;
+        allRepos = allRepos.concat(data);
+        page++;
+        if (data.length < 100) break;
+    }
+    return allRepos;
+}
+
+async function displayGitHubProjects() {
+    const container = document.getElementById('github-projects');
+    try {
+        const repos = await fetchAllGitHubRepos('Chrysanthe127');
+        reposData = repos;
+        renderRepos();
+    } catch(e) {
+        container.innerHTML = `<p data-en="Could not load repositories." data-fr="Impossible de charger les dépôts.">⚠️ Erreur de chargement.</p>`;
+        updateLanguage();
+    }
+}
+
+function renderRepos() {
+    const container = document.getElementById('github-projects');
+    if(!reposData.length) {
+        container.innerHTML = `<p data-en="No public repositories found." data-fr="Aucun dépôt public trouvé.">Aucun dépôt trouvé.</p>`;
+        updateLanguage();
+        return;
+    }
+    let html = '';
+    reposData.forEach(repo => {
+        const description = repo.description ? (repo.description.length > 120 ? repo.description.substring(0,120)+'…' : repo.description) : (currentLang === 'fr' ? 'Aucune description' : 'No description');
+        html += `
+            <div class="project-card">
+                <h3><i class="fab fa-github"></i> ${repo.name}</h3>
+                <p>${description}</p>
+                <p><i class="fas fa-star"></i> ${repo.stargazers_count} · <i class="fas fa-code-branch"></i> ${repo.forks_count}</p>
+                <a href="${repo.html_url}" target="_blank">${currentLang === 'fr' ? 'Explorer →' : 'Explore →'}</a>
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+}
+
+displayGitHubProjects();
+
+// Barres de compétences (observateur)
+const skillBars = document.querySelectorAll('.bar span');
+const skillsSection = document.getElementById('skills');
+const observer = new IntersectionObserver((entries) => { 
+    entries.forEach(entry => { 
+        if (entry.isIntersecting) { 
+            skillBars.forEach(bar => { 
+                const width = bar.style.width; 
+                if(width && !bar.classList.contains('animated')){ 
+                    bar.style.width = '0%'; 
+                    setTimeout(() => { bar.style.width = width; bar.classList.add('animated'); }, 50); 
+                } 
+            }); 
+            observer.unobserve(entry.target); 
+        } 
+    }); 
+}, { threshold: 0.3 });
+observer.observe(skillsSection);
+
+// Formulaire de contact
+const form = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+form.addEventListener('submit', async (e) => { 
+    e.preventDefault(); 
+    const formData = new FormData(form); 
+    try { 
+        const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } }); 
+        if (response.ok) { 
+            formStatus.innerHTML = currentLang === 'fr' ? '✅ Message envoyé avec succès !' : '✅ Message sent!'; 
+            formStatus.style.color = 'green'; 
+            form.reset(); 
+        } else throw new Error(); 
+    } catch (error) { 
+        formStatus.innerHTML = currentLang === 'fr' ? '❌ Erreur lors de l\'envoi. Réessayez.' : '❌ Sending failed. Try again.'; 
+        formStatus.style.color = 'red'; 
+    } 
+    setTimeout(() => { formStatus.innerHTML = ''; }, 5000); 
+});
+
+// Back to top
+const backBtn = document.getElementById('back2top');
+window.addEventListener('scroll', () => { if(window.scrollY > 400) backBtn.classList.add('show'); else backBtn.classList.remove('show'); });
+backBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+</script>
+</body>
+</html>
