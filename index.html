@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Portfolio professionnel de Chrysanthe Beni Joy Nishimwe – Développeur Full Stack PHP, Django, WordPress, React Native, Node.js">
-<title>Chrysanthe Nishimwe · Portfolio Full Stack</title>
-<link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+<meta name="description" content="Portfolio Full Stack – Chrysanthe Nishimwe : PHP, Django, WordPress, React Native, Node.js, DevOps, API, Docker">
+<title>Chrysanthe Nishimwe · Full Stack Developer</title>
+<link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -322,7 +322,7 @@ body.dark .badge {
 }
 .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -332,6 +332,8 @@ body.dark .badge {
     padding: 1.2rem;
     transition: all 0.25s;
     border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
 }
 .project-card:hover {
     transform: translateY(-5px);
@@ -339,8 +341,41 @@ body.dark .badge {
     border-color: var(--primary-light);
 }
 body.dark .project-card { background: #111827; }
+.project-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.project-card p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin-bottom: 0.8rem;
+}
+.lang-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.5rem 0;
+}
+.lang-badge {
+    background: rgba(59,130,246,0.12);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--primary-light);
+}
+body.dark .lang-badge { background: rgba(96,165,250,0.2); color: #90cdf4; }
+.repo-stats {
+    font-size: 0.75rem;
+    margin: 0.5rem 0;
+    color: var(--text-light-secondary);
+}
 .project-card a {
-    margin-top: 1rem;
+    margin-top: auto;
     display: inline-block;
     font-weight: 600;
     color: var(--primary-light);
@@ -388,12 +423,6 @@ body.dark .form-group input, body.dark .form-group textarea {
     font-size: 1rem;
 }
 .btn-submit:hover { transform: translateY(-2px); filter: brightness(1.02); }
-.social-links-contact {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin: 1.5rem 0 0.5rem;
-}
 footer {
     text-align: center;
     padding: 2rem;
@@ -426,9 +455,8 @@ footer {
     .profile { width: 110px; height: 110px; }
 }
 @media print {
-    nav, #back2top, .btn, .social-links-header, .contact-form, .social-links-contact { display: none; }
+    nav, #back2top, .btn, .social-links-header, .contact-form { display: none; }
     body { background: white; color: black; }
-    section { break-inside: avoid; }
 }
 </style>
 </head>
@@ -451,8 +479,8 @@ footer {
         <img id="profile-img" src="images/profile.jpg" alt="Chrysanthe Nishimwe" onerror="this.onerror=null; this.src='https://github.com/Chrysanthe127.png'">
     </div>
     <h1>Chrysanthe Beni Joy NISHIMWE</h1>
-    <p class="subtitle" data-en="Full Stack Developer · PHP · Django · WordPress · React Native · Node.js · Creative Technologist" data-fr="Développeur Full Stack · PHP · Django · WordPress · React Native · Node.js · Technologue créatif">
-        Développeur Full Stack · PHP · Django · WordPress · React Native · Node.js · Technologue créatif
+    <p class="subtitle" data-en="Full Stack Developer · PHP · Django · WordPress · React Native · Node.js · API Expert · DevOps Ready" data-fr="Développeur Full Stack · PHP · Django · WordPress · React Native · Node.js · Expert API · DevOps Ready">
+        Développeur Full Stack · PHP · Django · WordPress · React Native · Node.js · API Expert
     </p>
     <div class="buttons">
         <a href="https://github.com/Chrysanthe127" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
@@ -463,13 +491,13 @@ footer {
         <a href="https://wa.me/25767662602" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
         <a href="https://instagram.com/Cuatro127" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
         <a href="https://twitter.com/Cuatro127" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-
+    </div>
 </header>
 
 <section id="about">
     <h2><i class="fas fa-user-astronaut"></i> <span data-en="Professional Profile" data-fr="Profil Professionnel">Profil Professionnel</span></h2>
-    <p data-en="I am Chrysanthe Beni Joy Nishimwe, a young ICT graduate (Computer Option) from the University of Burundi. Passionate about web development, data management, and intelligent systems. Mastery of PHP, JavaScript, WordPress, PrestaShop, Django, CodeIgniter, React Native, Node.js, and databases (MySQL, SQL Server, Oracle). During my internship at the Burundi Revenue Authority (OBR), I contributed to application development, database backup, and user support. Rigorous, autonomous, and curious, ready for challenges in web development, data analysis, or full-stack projects." data-fr="Je suis Chrysanthe Nishimwe Beni Joy, jeune diplômé en TIC (Option Informatique) à l’Université du Burundi. Passionné par le développement web, la gestion de données et les systèmes intelligents. Je maîtrise PHP, JavaScript, WordPress, PrestaShop, Django, CodeIgniter, React Native, Node.js et les bases de données (MySQL, SQL Server, Oracle). Lors de mon stage à l’Office Burundais des Recettes (OBR), j’ai participé au développement d’applications, à la sauvegarde des bases de données et à l’assistance utilisateur. Rigoureux, autonome et curieux, prêt à relever des défis en développement web, analyse de données ou projets full-stack.">
-        Je suis Chrysanthe Nishimwe Beni Joy, jeune diplômé en TIC (Option Informatique) à l’Université du Burundi. Passionné par le développement web, la gestion de données et les systèmes intelligents. Je maîtrise PHP, JavaScript, WordPress, PrestaShop, Django, CodeIgniter, React Native, Node.js et les bases de données. Lors de mon stage à l’OBR, j’ai participé au développement d’applications, à la sauvegarde des bases de données et à l’assistance utilisateur. Rigoureux, autonome et curieux.
+    <p data-en="I am Chrysanthe Beni Joy Nishimwe, ICT graduate (Computer Science) from University of Burundi. Full-Stack developer with strong expertise in PHP, JavaScript, Python/Django, Node.js, React Native, and database management (MySQL, SQL Server, Oracle). I design REST APIs, maintain DevOps good practices (Git, Docker basics), and build performant web apps. Internship at Burundi Revenue Authority (OBR) where I built internal tools, managed backups, and provided IT support. Passionate about clean code, scalable architecture, and continuous learning." data-fr="Je suis Chrysanthe Beni Joy Nishimwe, diplômé en TIC (Option Informatique) à l'Université du Burundi. Développeur Full-Stack maîtrisant PHP, JavaScript, Python/Django, Node.js, React Native et les bases de données. Je conçois des API REST, applique les bonnes pratiques DevOps (Git, Docker) et développe des applications performantes. Stage à l'OBR : création d'outils internes, sauvegardes et support IT. Passionné par le code propre et l'architecture scalable.">
+        Je suis Chrysanthe Beni Joy Nishimwe, diplômé en TIC (Option Informatique) à l'Université du Burundi. Développeur Full-Stack maîtrisant PHP, JavaScript, Python/Django, Node.js, React Native et bases de données. Je construis des API REST, j'applique Git flow, Docker et je conçois des applications robustes.
     </p>
 </section>
 
@@ -488,41 +516,39 @@ footer {
         </div>
     </div>
     <div class="card">
-        <p><i class="fas fa-language"></i> <strong data-en="Languages" data-fr="Langues">Langues</strong> : 
-            <span data-en="Kirundi (native), French (fluent), English (good), Kiswahili (good)" data-fr="Kirundi (maternel), Français (courant), Anglais (bon), Kiswahili (bon)">Kirundi (maternel), Français (courant), Anglais (bon), Kiswahili (bon)</span>
-        </p>
+        <p><i class="fas fa-language"></i> <strong data-en="Languages" data-fr="Langues">Langues</strong> : Kirundi, Français (courant), Anglais (technique), Kiswahili</p>
     </div>
 </section>
 
 <section id="skills">
     <h2><i class="fas fa-cogs"></i> <span data-en="Technical Skills" data-fr="Compétences techniques">Compétences techniques</span></h2>
-    <div class="skill-group"><h3><i class="fas fa-code"></i> Langages & Technologies</h3>
-        <div class="skill"><p>HTML/CSS <span>90%</span></p><div class="bar"><span style="width:90%"></span></div></div>
-        <div class="skill"><p>JavaScript <span>80%</span></p><div class="bar"><span style="width:80%"></span></div></div>
-        <div class="skill"><p>PHP <span>75%</span></p><div class="bar"><span style="width:75%"></span></div></div>
-        <div class="skill"><p>Python <span>55%</span></p><div class="bar"><span style="width:55%"></span></div></div>
-        <div class="skill"><p>Java <span>60%</span></p><div class="bar"><span style="width:60%"></span></div></div>
-        <div class="skill"><p>React Native <span>55%</span></p><div class="bar"><span style="width:55%"></span></div></div>
-        <div class="skill"><p>Node.js <span>55%</span></p><div class="bar"><span style="width:55%"></span></div></div>
+    <div class="skill-group"><h3><i class="fas fa-code"></i> Langages & Frontend</h3>
+        <div class="skill"><p>HTML/CSS/JS <span>90%</span></p><div class="bar"><span style="width:90%"></span></div></div>
+        <div class="skill"><p>PHP (MVC) <span>80%</span></p><div class="bar"><span style="width:80%"></span></div></div>
+        <div class="skill"><p>Python/Django <span>70%</span></p><div class="bar"><span style="width:70%"></span></div></div>
+        <div class="skill"><p>Node.js / Express <span>65%</span></p><div class="bar"><span style="width:65%"></span></div></div>
+        <div class="skill"><p>React Native <span>60%</span></p><div class="bar"><span style="width:60%"></span></div></div>
     </div>
     <div class="skill-group"><h3><i class="fas fa-layer-group"></i> Frameworks & CMS</h3>
-        <div class="skill"><p>WordPress <span>90%</span></p><div class="bar"><span style="width:90%"></span></div></div>
-        <div class="skill"><p>PrestaShop <span>80%</span></p><div class="bar"><span style="width:80%"></span></div></div>
-        <div class="skill"><p>Django <span>55%</span></p><div class="bar"><span style="width:55%"></span></div></div>
-        <div class="skill"><p>CodeIgniter <span>55%</span></p><div class="bar"><span style="width:55%"></span></div></div>
+        <div class="badge-list"><span class="badge">WordPress</span><span class="badge">PrestaShop</span><span class="badge">Django REST</span><span class="badge">CodeIgniter</span><span class="badge">Express.js</span><span class="badge">Bootstrap/Tailwind</span></div>
     </div>
-    <div class="skill-group"><h3><i class="fas fa-database"></i> Bases de données & Outils</h3><div class="badge-list"><span class="badge">MySQL</span><span class="badge">SQL Server</span><span class="badge">Oracle</span><span class="badge">Git/GitHub</span><span class="badge">Maintenance IT</span></div></div>
+    <div class="skill-group"><h3><i class="fas fa-database"></i> Bases de données & DevOps</h3>
+        <div class="badge-list"><span class="badge">MySQL</span><span class="badge">SQL Server</span><span class="badge">Oracle</span><span class="badge">Git/GitHub Actions</span><span class="badge">Docker</span><span class="badge">RESTful API</span><span class="badge">JWT/OAuth</span><span class="badge">Postman</span></div>
+    </div>
+    <div class="skill-group"><h3><i class="fas fa-toolbox"></i> Full-Stack Must-Haves</h3>
+        <div class="badge-list"><span class="badge">CI/CD</span><span class="badge">Testing (PHPUnit/Jest)</span><span class="badge">Redis</span><span class="badge">WebSockets</span><span class="badge">Nginx/Apache</span><span class="badge">Agile/Scrum</span></div>
+    </div>
 </section>
 
 <section id="experience">
     <h2><i class="fas fa-briefcase"></i> <span data-en="Professional Experience" data-fr="Expérience professionnelle">Expérience professionnelle</span></h2>
-    <div class="card"><h3><i class="fas fa-building"></i> Office Burundais des Recettes (OBR) – Stage académique</h3><p><strong data-en="Roles:" data-fr="Missions :">Missions :</strong> Support applicatif, DBA, Assistance</p><ul><li><strong data-en="Application development" data-fr="Développement applicatif">Développement applicatif</strong> : Gestion et suivi.</li><li><strong data-en="Database backup & security" data-fr="Sauvegarde BD">Sauvegarde BD</strong> : Backup et sécurisation.</li><li><strong data-en="IT Support" data-fr="Support IT">Support IT</strong> : Utilisateurs, réseau, logiciels.</li></ul></div>
-    <div class="card"><h3><i class="fas fa-star"></i> <span data-en="Soft Skills & Qualities" data-fr="Qualités personnelles">Qualités</span></h3><ul><li><i class="fas fa-check-circle"></i> Rigueur & organisation</li><li><i class="fas fa-check-circle"></i> Autonomie & initiative</li><li><i class="fas fa-check-circle"></i> Adaptabilité & curiosité technique</li></ul></div>
+    <div class="card"><h3><i class="fas fa-building"></i> Office Burundais des Recettes (OBR) – Stage Full Stack</h3><p><strong>Missions :</strong> Conception d'applications web internes, optimisation des requêtes SQL, backup automatisé, support IT niveau 1&2.</p><ul><li>Développement d'un module de suivi des réclamations (PHP/MySQL).</li><li>Implémentation de sauvegardes planifiées des bases Oracle.</li><li>Documentation technique et assistance utilisateur.</li></ul></div>
+    <div class="card"><h3><i class="fas fa-laptop-code"></i> Freelance & Projets personnels</h3><ul><li>Création de sites e-commerce (WordPress/WooCommerce, PrestaShop).</li><li>API REST avec Django REST Framework pour application mobile.</li><li>Maintenance d'applications legacy et migration de bases de données.</li></ul></div>
 </section>
 
 <section id="projects">
-    <h2><i class="fab fa-github"></i> <span data-en="GitHub Projects" data-fr="Projets GitHub">Projets GitHub</span></h2>
-    <div class="projects" id="github-projects"><p><i class="fas fa-spinner fa-pulse"></i> <span data-en="Loading projects..." data-fr="Chargement des projets...">Chargement des projets...</span></p></div>
+    <h2><i class="fab fa-github"></i> <span data-en="GitHub Projects (with languages & frameworks)" data-fr="Projets GitHub (langages & frameworks)">Projets GitHub (langages & frameworks)</span></h2>
+    <div class="projects" id="github-projects"><div style="text-align:center"><i class="fas fa-spinner fa-pulse"></i> Chargement des projets et analyse des langages...</div></div>
 </section>
 
 <section id="contact">
@@ -537,35 +563,29 @@ footer {
             <div id="formStatus" class="form-message"></div>
         </form>
     </div>
-    <div class="social-links-contact">
+    <div class="social-links-header" style="margin-top:0">
         <a href="https://facebook.com/Chrysanthe.nishimwe" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
         <a href="https://wa.me/25767662602" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
         <a href="https://instagram.com/Cuatro127" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
         <a href="https://twitter.com/Cuatro127" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
     </div>
 </section>
-
-<footer><p>© 2026 Chrysanthe Beni Joy Nishimwe — Portfolio | <span data-en="" data-fr="Design moderne et responsive">Design moderne et responsive</span></p></footer>
-
+<footer><p>© 2026 Chrysanthe Beni Joy Nishimwe — Full Stack Portfolio | <span data-en="Modern, responsive & API-driven" data-fr="Design moderne, responsive & intégration API">Design moderne, responsive & intégration API</span></p></footer>
 <div id="back2top"><i class="fas fa-chevron-up"></i></div>
 
 <script>
-// Thème clair/sombre
+// Theme
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 if (localStorage.getItem('theme') === 'dark') { body.classList.add('dark'); themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; } 
 else { themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; }
 themeToggle.addEventListener('click', () => { body.classList.toggle('dark'); if(body.classList.contains('dark')){ localStorage.setItem('theme','dark'); themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; } else { localStorage.setItem('theme','light'); themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; } });
 
-// Bilinguisme
+// Bilingual
 let currentLang = localStorage.getItem('lang') || 'fr';
 const langBtn = document.getElementById('lang-toggle-btn');
-let reposData = [];
-
-function updateLanguage() {
-    document.querySelectorAll('[data-en][data-fr]').forEach(el => { 
-        el.innerText = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-fr'); 
-    });
+function updateLanguageUI() {
+    document.querySelectorAll('[data-en][data-fr]').forEach(el => { el.innerText = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-fr'); });
     langBtn.innerText = currentLang === 'fr' ? 'EN' : 'FR';
     const labels = document.querySelectorAll('.form-group label');
     if(labels[0]) labels[0].innerText = currentLang === 'fr' ? 'Nom complet' : 'Full name';
@@ -577,68 +597,90 @@ function updateLanguage() {
     if(placeholders[0]) placeholders[0].placeholder = currentLang === 'fr' ? 'Chrysanthe Nishimwe' : 'Chrysanthe Nishimwe';
     if(placeholders[1]) placeholders[1].placeholder = currentLang === 'fr' ? 'exemple@domaine.com' : 'example@domain.com';
     if(placeholders[2]) placeholders[2].placeholder = currentLang === 'fr' ? 'Bonjour, je souhaite collaborer...' : 'Hello, I would like to collaborate...';
-    if(reposData.length) renderRepos();
+    const projectsDesc = document.querySelectorAll('.project-card p:not(.repo-stats)');
+    // descriptions already from dataset
 }
-langBtn.addEventListener('click', () => { currentLang = currentLang === 'fr' ? 'en' : 'fr'; localStorage.setItem('lang', currentLang); updateLanguage(); });
-updateLanguage();
+langBtn.addEventListener('click', () => { currentLang = currentLang === 'fr' ? 'en' : 'fr'; localStorage.setItem('lang', currentLang); updateLanguageUI(); });
+updateLanguageUI();
 
-// Récupération de TOUS les repos GitHub (pagination gérée)
-async function fetchAllGitHubRepos(username) {
-    let page = 1;
-    let allRepos = [];
-    while (true) {
-        const url = `https://api.github.com/users/${username}/repos?per_page=100&page=${page}&sort=updated`;
-        const response = await fetch(url);
-        if (!response.ok) break;
-        const data = await response.json();
-        if (data.length === 0) break;
-        allRepos = allRepos.concat(data);
+// Fetch all repos with pagination
+async function fetchAllRepos(username) {
+    let page = 1, all = [];
+    while(true) {
+        const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&page=${page}&sort=updated`);
+        if(!res.ok) break;
+        const data = await res.json();
+        if(data.length === 0) break;
+        all = all.concat(data);
         page++;
-        if (data.length < 100) break;
+        if(data.length < 100) break;
     }
-    return allRepos;
+    return all;
 }
 
-async function displayGitHubProjects() {
+async function fetchLanguagesAndTopics(repoFullName, owner, repoName) {
+    try {
+        const [langRes, topicsRes] = await Promise.all([
+            fetch(`https://api.github.com/repos/${owner}/${repoName}/languages`),
+            fetch(`https://api.github.com/repos/${owner}/${repoName}/topics`, { headers: { 'Accept': 'application/vnd.github.mercy-preview+json' } })
+        ]);
+        const languages = await langRes.json();
+        let topics = [];
+        if(topicsRes.ok) {
+            const topicsData = await topicsRes.json();
+            topics = topicsData.names || [];
+        }
+        return { languages, topics };
+    } catch(e) { return { languages: {}, topics: [] }; }
+}
+
+async function loadEnhancedProjects() {
     const container = document.getElementById('github-projects');
     try {
-        const repos = await fetchAllGitHubRepos('Chrysanthe127');
-        reposData = repos;
-        renderRepos();
-    } catch(e) {
-        container.innerHTML = `<p data-en="Could not load repositories." data-fr="Impossible de charger les dépôts.">⚠️ Erreur de chargement.</p>`;
-        updateLanguage();
+        const repos = await fetchAllRepos('Chrysanthe127');
+        if(!repos.length) { container.innerHTML = `<p data-en="No public repositories found." data-fr="Aucun dépôt public trouvé.">Aucun repo trouvé.</p>`; updateLanguageUI(); return; }
+        container.innerHTML = `<div style="grid-column:1/-1; text-align:center"><i class="fas fa-code-branch"></i> Chargement des langages (API GitHub)...</div>`;
+        const reposWithDetails = [];
+        for(let repo of repos) {
+            const { languages, topics } = await fetchLanguagesAndTopics(repo.full_name, repo.owner.login, repo.name);
+            reposWithDetails.push({ ...repo, languages, topics });
+        }
+        renderProjectCards(reposWithDetails);
+    } catch(err) {
+        container.innerHTML = `<p data-en="Error loading projects. Check console." data-fr="Erreur lors du chargement.">⚠️ Erreur GitHub (limite API ou réseau)</p>`;
     }
 }
 
-function renderRepos() {
+function renderProjectCards(repos) {
     const container = document.getElementById('github-projects');
-    if(!reposData.length) {
-        container.innerHTML = `<p data-en="No public repositories found." data-fr="Aucun dépôt public trouvé.">Aucun dépôt trouvé.</p>`;
-        updateLanguage();
-        return;
-    }
+    if(!repos.length) { container.innerHTML = `<p>Aucun projet à afficher</p>`; return; }
     let html = '';
-    reposData.forEach(repo => {
+    repos.forEach(repo => {
+        const langEntries = Object.entries(repo.languages || {});
+        const topLangs = langEntries.sort((a,b)=>b[1]-a[1]).slice(0, 4);
+        const languageBadges = topLangs.map(([lang]) => `<span class="lang-badge"><i class="fab fa-${lang.toLowerCase() === 'javascript' ? 'js' : (lang.toLowerCase() === 'python' ? 'python' : 'code')}"></i> ${lang}</span>`).join('');
+        const topicsBadges = (repo.topics || []).slice(0,3).map(t => `<span class="lang-badge" style="background:rgba(139,92,246,0.15)">#${t}</span>`).join('');
         const description = repo.description ? (repo.description.length > 120 ? repo.description.substring(0,120)+'…' : repo.description) : (currentLang === 'fr' ? 'Aucune description' : 'No description');
         html += `
             <div class="project-card">
                 <h3><i class="fab fa-github"></i> ${repo.name}</h3>
                 <p>${description}</p>
-                <p><i class="fas fa-star"></i> ${repo.stargazers_count} · <i class="fas fa-code-branch"></i> ${repo.forks_count}</p>
-                <a href="${repo.html_url}" target="_blank">${currentLang === 'fr' ? 'Explorer →' : 'Explore →'}</a>
+                <div class="lang-badges">${languageBadges} ${topicsBadges}</div>
+                <div class="repo-stats"><i class="fas fa-star"></i> ${repo.stargazers_count} · <i class="fas fa-code-branch"></i> ${repo.forks_count} · <i class="far fa-calendar-alt"></i> ${new Date(repo.updated_at).toLocaleDateString()}</div>
+                <a href="${repo.html_url}" target="_blank">${currentLang === 'fr' ? 'Explorer le dépôt →' : 'Explore repository →'}</a>
             </div>
         `;
     });
     container.innerHTML = html;
+    updateLanguageUI(); // refresh dynamic texts inside cards (description already static but lang might change)
 }
 
-displayGitHubProjects();
+loadEnhancedProjects();
 
-// Barres de compétences (observateur)
+// Skills bar intersection observer
 const skillBars = document.querySelectorAll('.bar span');
 const skillsSection = document.getElementById('skills');
-const observer = new IntersectionObserver((entries) => { 
+const observerSkill = new IntersectionObserver((entries) => { 
     entries.forEach(entry => { 
         if (entry.isIntersecting) { 
             skillBars.forEach(bar => { 
@@ -648,13 +690,13 @@ const observer = new IntersectionObserver((entries) => {
                     setTimeout(() => { bar.style.width = width; bar.classList.add('animated'); }, 50); 
                 } 
             }); 
-            observer.unobserve(entry.target); 
+            observerSkill.unobserve(entry.target); 
         } 
     }); 
 }, { threshold: 0.3 });
-observer.observe(skillsSection);
+observerSkill.observe(skillsSection);
 
-// Formulaire de contact
+// Contact form
 const form = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 form.addEventListener('submit', async (e) => { 
